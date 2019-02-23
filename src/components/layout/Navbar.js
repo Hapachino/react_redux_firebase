@@ -19,12 +19,12 @@ const signedIn = [
 
 const signedOut = [
   {
-    to: '/',
+    to: '/signup',
     text: 'Sign Up',
   },
   {
-    to: '/',
-    text: 'Log In',
+    to: '/signin',
+    text: 'Sign In',
   }
 ];
 
