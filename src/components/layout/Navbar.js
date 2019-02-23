@@ -3,12 +3,12 @@ import { Link, NavLink } from 'react-router-dom';
 
 const signedIn = [
   {
-    to: '/',
+    to: '/create',
     text: 'New Project',
   },
   {
-    to: '/',
-    text: 'Log Out',
+    to: '/signout',
+    text: 'Sign Out',
   },
   {
     to: '/',

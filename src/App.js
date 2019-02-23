@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import CreateProject from './components/projects/CreateProject';
 import Dashboard from './components/dashboard/Dashboard';
 import Navbar from './components/layout/Navbar';
 import ProjectDetails from './components/projects/ProjectDetails';
@@ -14,6 +15,7 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Dashboard} />  
+            <Route path="/create" component={CreateProject} />
             <Route path="/project/:id" component={ProjectDetails} />
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
