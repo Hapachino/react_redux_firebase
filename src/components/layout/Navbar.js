@@ -49,6 +49,7 @@ export default () => {
     <nav className="nav-wrapper grey darken-3">
       <div className="container">
         <Link to="/" className="brand-logo">Bulletin</Link>
+        {renderLinks(signedIn)}
         {renderLinks(signedOut)}
       </div>
     </nav>
