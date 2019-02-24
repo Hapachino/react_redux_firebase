@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const signedIn = [
   {
@@ -44,7 +45,7 @@ function renderLinks(links) {
   );
 }
 
-export default () => {
+const NavBar = () => {
   return (
     <nav className="nav-wrapper grey darken-3">
       <div className="container">
@@ -55,3 +56,12 @@ export default () => {
     </nav>
   );
 }
+
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    auth: state.firebase,
+  };
+}
+
+export default connect(mapStateToProps)(NavBar);
