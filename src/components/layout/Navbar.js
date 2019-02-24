@@ -51,21 +51,24 @@ function renderLinks(links, props) {
 }
 
 const NavBar = props => {
+  const { auth } = props;
+  const links = auth.uid ? 
+    renderLinks(signedIn, props) : 
+    renderLinks(signedOut, props);
+
   return (
     <nav className="nav-wrapper grey darken-3">
       <div className="container">
         <Link to="/" className="brand-logo">Bulletin</Link>
-        {renderLinks(signedIn, props)}
-        {renderLinks(signedOut, props)}
+        {links}
       </div>
     </nav>
   );
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
-    auth: state.firebase,
+    auth: state.firebase.auth,
   };
 }
 
