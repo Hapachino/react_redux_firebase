@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import './index.css';
 import App from './App';
-import rootReducer from './store/reducers/rootReducer';
+import rootReducer from './store/reducers';
 import think from './middleware/think';
 import * as serviceWorker from './serviceWorker';
 
