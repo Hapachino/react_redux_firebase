@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { signOut } from '../../store/actions/authActions';
 
 const signedIn = [
   {
@@ -8,13 +9,13 @@ const signedIn = [
     text: 'New Project',
   },
   {
-    to: '/signout',
+    onClick: 'signOut',
     text: 'Sign Out',
   },
   {
     to: '/',
     text: 'EB',
-    class: 'btn btn-floating blue lighten-1',
+    className: 'btn btn-floating blue lighten-1',
   }
 ];
 
@@ -29,11 +30,15 @@ const signedOut = [
   }
 ];
 
-function renderLinks(links) {
+function renderLinks(links, props) {
   const outputLinks = links.map(link => {
+    const { to, className, text, onClick} = link;
+
     return (
-      <li key={link.to}>
-        <NavLink to={link.to} className={link.class}>{link.text}</NavLink>
+      <li key={to || onClick}>
+        {to ? 
+        <NavLink to={to} className={className}>{text}</NavLink> :
+        <a onClick={props[onClick]}>{text}</a>}
       </li>
     );
   });
@@ -45,13 +50,13 @@ function renderLinks(links) {
   );
 }
 
-const NavBar = () => {
+const NavBar = props => {
   return (
     <nav className="nav-wrapper grey darken-3">
       <div className="container">
         <Link to="/" className="brand-logo">Bulletin</Link>
-        {renderLinks(signedIn)}
-        {renderLinks(signedOut)}
+        {renderLinks(signedIn, props)}
+        {renderLinks(signedOut, props)}
       </div>
     </nav>
   );
@@ -64,4 +69,6 @@ const mapStateToProps = state => {
   };
 }
 
-export default connect(mapStateToProps)(NavBar);
+export default connect(mapStateToProps, {
+  signOut,
+})(NavBar);

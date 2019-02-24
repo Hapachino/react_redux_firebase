@@ -11,10 +11,24 @@ export const signIn = credentials => (
         password,
       )
 
-      dispatch({ type: types.LOGIN_SUCCESS });
+      dispatch({ type: types.SIGNIN_SUCCESS });
 
     } catch(err) {
-      dispatch({ type: types.LOGIN_ERROR, err });
+      dispatch({ type: types.SIGNIN_ERROR, err });
+    }
+  }
+);
+
+export const signOut = () => (
+  async (dispatch, getState, { getFirebase }) => {
+    try {
+      const fb = getFirebase();
+
+      await fb.auth().signOut();
+
+      dispatch({ type: types.SIGNOUT_SUCCESS });
+    } catch(err) {
+
     }
   }
 );
